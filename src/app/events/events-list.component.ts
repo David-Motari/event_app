@@ -3,7 +3,11 @@ import { Component } from "@angular/core";
 @Component({
   selector: "events-list",
   template: `
-    <events-thumbnail (eventClick)="handleEventClicked($event)" [event]="event1"></events-thumbnail>
+  <div>
+    <events-thumbnail #thumbnail [event]="event1"></events-thumbnail>
+    <h3>{{thumbnail.someProperty}}</h3>
+    <button class="btn btn-primary" (click)="thumbnail.logMe()">Log Me!</button>
+  </div>
   `
 })
 
@@ -22,7 +26,4 @@ export class EventsListComponent {
     }
   }
 
-  handleEventClicked(data) {
-    console.log('recieved:', data);
-  }
 }
